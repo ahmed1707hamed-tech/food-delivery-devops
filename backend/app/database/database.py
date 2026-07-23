@@ -1,16 +1,26 @@
 import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
-SQLALCHEMY_DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/food_delivery")
+SQLALCHEMY_DATABASE_URL = os.getenv(
+    "SQLALCHEMY_DATABASE_URL",
+    "postgresql://postgres:postgres@postgres:5432/food_delivery"
+)
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
 
 Base = declarative_base()
+
 
 def get_db():
     db = SessionLocal()
