@@ -8,7 +8,7 @@ load_dotenv()
 
 SQLALCHEMY_DATABASE_URL = os.getenv(
     "SQLALCHEMY_DATABASE_URL",
-    "postgresql://postgres:postgres@postgres:5432/food_delivery"
+    "postgresql://postgres:postgres@postgres:5432/fooddb"
 )
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
