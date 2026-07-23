@@ -14,11 +14,11 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(auth.router)
-app.include_router(profile.router)
-app.include_router(restaurants.router)
-app.include_router(menu.router)
-app.include_router(orders.router)
+app.include_router(auth.router, prefix="/api")
+app.include_router(profile.router, prefix="/api")
+app.include_router(restaurants.router, prefix="/api")
+app.include_router(menu.router, prefix="/api")
+app.include_router(orders.router, prefix="/api")
 
 @app.get("/")
 def root():
