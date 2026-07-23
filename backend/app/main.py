@@ -1,8 +1,24 @@
+import logging
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.database.database import Base, engine
+from app.models import User, Restaurant, MenuItem, Order, OrderItem  # noqa: F401
 from app.routers import auth, profile, restaurants, menu, orders
 
-app = FastAPI(title="Food Delivery API", version="1.0.0")
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Create all tables on startup (idempotent — safe to run even after Alembic)
+    logger.info("Running Base.metadata.create_all() — creating tables if they don't exist...")
+    Base.metadata.create_all(bind=engine)
+    logger.info("Database tables verified/created successfully.")
+    yield
+
+
+app = FastAPI(title="Food Delivery API", version="1.0.0", lifespan=lifespan)
 
 # CORS middleware
 app.add_middleware(
