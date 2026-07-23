@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: food-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: food_delivery
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: food-backend
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      SQLALCHEMY_DATABASE_URL: postgresql://postgres:postgres@postgres:5432/food_delivery
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: food-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+
+volumes:
+  postgres_data:

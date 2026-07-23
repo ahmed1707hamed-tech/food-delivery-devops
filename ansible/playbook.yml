@@ -1,0 +1,9 @@
+---
+- hosts: k3s
+  become: yes
+
+  roles:
+    - { role: docker, tags: ["docker"] }
+    - { role: k3s, tags: ["k3s"] }
+    - { role: helm, tags: ["helm"] }
+    - { role: nginx, tags: ["nginx"] }
