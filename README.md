@@ -330,41 +330,7 @@ PostgreSQL
 
 ---
 
-# 📸 Screenshots
 
-## Architecture
-
-![](docs/images/architecture-diagram.png)
-
----
-
-## Food Delivery Application
-
-![](docs/images/food-delivery-app.png)
-
----
-
-## GitHub Actions
-
-![](docs/images/github-actions-pipeline.png)
-
----
-
-## Argo CD
-
-![](docs/images/argocd-dashboard.png)
-
----
-
-## Prometheus
-
-![](docs/images/prometheus-targets.png)
-
----
-
-## Grafana
-
-![](docs/images/grafana-dashboard.png)
 
 ---
 
@@ -373,7 +339,7 @@ PostgreSQL
 Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Food-Delivery-Platform.git
+git clone https://github.com/ahmed1707hamed-tech/Food-delivery-Platform.git
 ```
 
 Initialize Terraform
@@ -442,7 +408,7 @@ kubectl get svc
 Cloud & DevOps Engineer
 
 - GitHub: https://github.com/ahmed1707hamed-tech
-- LinkedIn: https://linkedin.com/in/YOUR-LINKEDIN
+- LinkedIn: https://www.linkedin.com/in/ahmed-hamed-340570364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
 
 ---
 
